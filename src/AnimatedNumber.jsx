@@ -44,7 +44,6 @@ export default class AnimatedNumber extends Component {
         format: n => n,
         duration: ANIMATION_DURATION,
         frameDuration: 16,
-        stepPrecision: 2,
         frameStyle: () => ({})
     }
 
@@ -93,7 +92,7 @@ export default class AnimatedNumber extends Component {
     }
 
     tweenValue() {
-        const {stepPrecision, value} = this.props;
+        const {value} = this.props;
         let {frame = 0, currentValue = 0} = this.state;
 
         currentValue = +currentValue;
@@ -104,14 +103,6 @@ export default class AnimatedNumber extends Component {
         }
 
         currentValue = currentValue + this.tweenStep;
-
-        if (stepPrecision) {
-            currentValue = currentValue.toFixed(stepPrecision);
-        } else if (this.tweenStep < 0) {
-            currentValue = Math.floor(currentValue);
-        } else if (this.tweenStep > 0) {
-            currentValue = Math.ceil(currentValue);
-        }
 
         if (this.tweenStep < 0) {
             currentValue = Math.max(value, currentValue);
@@ -131,11 +122,25 @@ export default class AnimatedNumber extends Component {
     }
 
     render() {
-        const {format, frameStyle} = this.props;
+        const {format, value, frameStyle, stepPrecision} = this.props;
         const {frame, currentValue} = this.state;
 
         let {style} = this.props;
-        const currStyle = frameStyle((frame / this.totalFrames) * 100);
+        let adjustedValue: number = currentValue;
+
+        if (currentValue !== value) {
+            if (stepPrecision > 0) {
+                adjustedValue = currentValue.toFixed(stepPrecision);
+            } else if (this.tweenStep < 0 && stepPrecision === 0) {
+                adjustedValue = Math.floor(currentValue);
+            } else if (this.tweenStep > 0 && stepPrecision === 0) {
+                adjustedValue = Math.ceil(currentValue);
+            }
+        }
+
+        adjustedValue = +adjustedValue;
+
+        const currStyle: (Object | null) = frameStyle((frame / this.totalFrames) * 100);
 
         if (style && currStyle) {
             style = {
@@ -149,7 +154,7 @@ export default class AnimatedNumber extends Component {
         return React.createElement(
             this.props.component,
             {...this.props, style},
-            format(currentValue)
+            format(adjustedValue)
         );
     }
 

@@ -24,7 +24,7 @@ class Demo extends Component {
 
     update() {
         this.setState({
-            smallValue: getRandomInt(10, 20),
+            smallValue: getRandomInt(10, 1000),
             bigValue: getRandomInt(1024, Math.pow(1024, 4))
         });
     }
@@ -44,6 +44,7 @@ class Demo extends Component {
                         frameStyle={perc => (
                             perc === 100 ? {} : {backgroundColor: '#ffeb3b'}
                         )}
+                        stepPrecision={0}
                         value={smallValue}
                         format={n => `Animated numbers are ${n} ` +
                             'times more awesome than regular ones'}/>
@@ -68,8 +69,8 @@ class Demo extends Component {
                     <div>
                         {'And you can even render inside SVG'}
                     </div>
-                    <svg width={300} height={300}>
-                        <g transform="translate(30,60)">
+                    <svg width={600} height={600}>
+                        <g transform="rotate(-15 150 150) translate(50,100)">
                             <AnimatedNumber
                                 style={{
                                     transition: '0.8s ease-out',

@@ -74,9 +74,8 @@ A callback function that accepts the percentage of completion of current animati
 ----
 
 #### stepPrecision: ?number
-**default** `2`<br/>
 The number of decimal places to render for intermediate values.
-If set to `0`, rounds of intermediate values using `Math.round`
+If set to `0`, rounds off the intermediate values using `Math.round`
 
 
 <br/>
