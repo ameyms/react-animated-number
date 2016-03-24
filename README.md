@@ -5,7 +5,7 @@
 React component for animating numbers
 
 ## Install
-react-animated-number is available npm and can be used with [browserify](http://browserify.org/) or [webpack](https://webpack.github.io/).
+react-animated-number is available via npm and can be used with [browserify](http://browserify.org/) or [webpack](https://webpack.github.io/).
 
 ```
 npm install --save react-animated-number
