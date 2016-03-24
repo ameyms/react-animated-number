@@ -5,7 +5,7 @@ const ANIMATION_DURATION: number = 300;
 
 type AnimatedNumberProps = {
     component: any,
-    format: ?(n: number) => number,
+    format: ?(n: number) => string,
     value: number,
     duration: ?number,
     frameDuration: ?number,
