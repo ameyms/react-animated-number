@@ -1,7 +1,7 @@
 {
   "name": "react-animated-number",
   "author": "Amey Sakhadeo",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "React component for animating numbers",
   "main": "build/index.js",
   "engines": {
@@ -55,9 +55,7 @@
     "gulp-nodemon": "^2.0.6",
     "gulp-plumber": "^1.0.1",
     "gulp-size": "^2.0.0",
-    "gulp-util": "^3.0.7"
-  },
-  "dependencies": {
+    "gulp-util": "^3.0.7",
     "vinyl-source-stream": "^1.1.0"
   }
 }
