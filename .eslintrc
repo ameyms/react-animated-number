@@ -1,0 +1,302 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "arrowFunctions": true,
+        "binaryLiterals": true,
+        "blockBindings": true,
+        "classes": true,
+        "defaultParams": true,
+        "destructuring": true,
+        "forOf": true,
+        "generators": true,
+        "modules": true,
+        "objectLiteralComputedProperties": true,
+        "objectLiteralDuplicateProperties": true,
+        "objectLiteralShorthandMethods": true,
+        "objectLiteralShorthandProperties": true,
+        "octalLiterals": true,
+        "regexUFlag": false,
+        "regexYFlag": false,
+        "restParams": true,
+        "spread": true,
+        "superInFunctions": true,
+        "templateStrings": true,
+        "unicodeCodePointEscapes": true,
+        "globalReturn": true,
+        "jsx": true,
+        "experimentalObjectRestSpread": true
+      }
+  },
+  "rules": {
+    "no-mixed-requires": [
+      0,
+      false
+    ],
+    "strict": [
+      1,
+      "never"
+    ],
+    "no-undef": 2,
+    "no-delete-var": 2,
+    "no-shadow": 2,
+    "no-shadow-restricted-names": 2,
+    "no-unused-vars": [
+      2,
+      {
+        "vars": "all",
+        "args": "after-used"
+      }
+    ],
+    "no-undefined": 2,
+    "no-use-before-define": 2,
+    "no-unneeded-ternary": 1,
+    "no-obj-calls": 2,
+    "no-negated-in-lhs": 2,
+    "no-inner-declarations": 2,
+    "curly": 1,
+    "camelcase": 2,
+    "max-len": [
+      1,
+      100,
+      4,
+      {
+        "ignoreComments": true,
+        "ignoreUrls": true,
+        "ignorePattern": "^\\s*import\\s+"
+      }
+    ],
+    "padded-blocks": [
+      0,
+      "always"
+    ],
+    "no-invalid-regexp": 2,
+    "vars-on-top": 0,
+    "guard-for-in": 1,
+    "no-underscore-dangle": 0,
+    "no-func-assign": 2,
+    "no-extra-parens": 0,
+    "no-loop-func": 1,
+    "no-multi-spaces": 1,
+    "comma-dangle": [
+      1,
+      "never"
+    ],
+    "indent": [
+      2,
+      4,
+      {
+        "SwitchCase": 1,
+        "VariableDeclarator": 1
+      }
+    ],
+    "quotes": [
+      2,
+      "single"
+    ],
+    "semi": [
+      2,
+      "always"
+    ],
+    "semi-spacing": [
+      2,
+      {
+        "before": false,
+        "after": true
+      }
+    ],
+    "brace-style": [
+      2,
+      "1tbs",
+      {
+        "allowSingleLine": true
+      }
+    ],
+    "key-spacing": [
+      2,
+      {
+        "beforeColon": false,
+        "afterColon": true
+      }
+    ],
+    "new-cap": [
+      2,
+      {
+        "newIsCap": true,
+        "capIsNew": true,
+        "capIsNewExceptions": [
+          "Immutable",
+          "Set"
+        ]
+      }
+    ],
+    "keyword-spacing": [
+      2,
+      {
+        "before": true,
+        "after": true
+      }
+    ],
+    "space-before-blocks": [
+      1,
+      "always"
+    ],
+    "array-bracket-spacing": [
+      2,
+      "never"
+    ],
+    "object-curly-spacing": [
+      2,
+      "never",
+      {
+        "objectsInObjects": false,
+        "arraysInObjects": false
+      }
+    ],
+    "computed-property-spacing": [
+      1,
+      "never"
+    ],
+    "space-in-parens": [
+      1,
+      "never"
+    ],
+    "space-before-function-paren": [
+      1,
+      "never"
+    ],
+    "space-infix-ops": [
+      2,
+      {
+        "int32Hint": false
+      }
+    ],
+    "max-nested-callbacks": [
+      2,
+      3
+    ],
+    "one-var": [
+      0,
+      "always"
+    ],
+    "eqeqeq": [
+      2,
+      "smart"
+    ],
+    "accessor-pairs": [
+      1,
+      {
+        "getWithoutSet": true
+      }
+    ],
+    "no-cond-assign": [
+      2,
+      "except-parens"
+    ],
+    "valid-typeof": 1,
+    "no-div-regex": 2,
+    "no-control-regex": 2,
+    "no-caller": 2,
+    "no-alert": 2,
+    "no-with": 2,
+    "no-duplicate-case": 2,
+    "no-dupe-args": 2,
+    "no-dupe-keys": 2,
+    "no-unreachable": 2,
+    "use-isnan": 2,
+    "no-redeclare": [
+      2,
+      {
+        "builtinGlobals": true
+      }
+    ],
+    "no-useless-call": 2,
+    "no-void": 2,
+    "no-new-wrappers": 2,
+    "no-new-require": 2,
+    "no-path-concat": 2,
+    "no-lonely-if": 1,
+    "no-array-constructor": 1,
+    "no-unexpected-multiline": 2,
+    "linebreak-style": [
+      2,
+      "unix"
+    ],
+    "no-trailing-spaces": [
+      1,
+      {
+        "skipBlankLines": false
+      }
+    ],
+    "eol-last": 2,
+    "prefer-spread": 1,
+    "no-this-before-super": 2,
+    "constructor-super": 2,
+    "prefer-const": 1,
+    "no-bitwise": 1,
+    "babel/generator-star-spacing": 1,
+    "babel/new-cap": 0,
+    "babel/object-curly-spacing": 1,
+    "babel/object-shorthand": 1,
+    "babel/arrow-parens": 0,
+
+    "react/display-name": 2,
+    "react/forbid-prop-types": 0,
+    "react/jsx-boolean-value": 1,
+    "react/jsx-closing-bracket-location": [
+      1,
+      {
+        "selfClosing": "after-props",
+        "nonEmpty": "after-props"
+      }
+    ],
+    "react/jsx-curly-spacing": 1,
+    "react/jsx-indent-props": 1,
+    "react/jsx-max-props-per-line": [
+      1,
+      {
+        "maximum": 3
+      }
+    ],
+    "react/jsx-no-duplicate-props": 2,
+    "react/jsx-no-literals": 1,
+    "react/jsx-no-undef": 2,
+    "jsx-quotes": [
+      1,
+      "prefer-double"
+    ],
+    "react/sort-prop-types": 0,
+    "react/jsx-sort-props": [
+      0,
+      {
+        "callbacksLast": true
+      }
+    ],
+    "react/jsx-uses-react": 1,
+    "react/jsx-uses-vars": 1,
+    "react/no-danger": 1,
+    "react/jsx-pascal-case": 1,
+    "react/no-did-mount-set-state": 2,
+    "react/no-did-update-set-state": 2,
+    "react/no-direct-mutation-state": 2,
+    "react/no-multi-comp": 0,
+    "react/no-set-state": 0,
+    "react/no-unknown-property": 2,
+    "react/prop-types": 0,
+    "react/react-in-jsx-scope": 2,
+    "react/require-extension": 0,
+    "react/self-closing-comp": 1,
+    "react/sort-comp": 0,
+    "react/wrap-multilines": 1
+  },
+  "plugins": [
+    "babel",
+    "react"
+  ]
+}

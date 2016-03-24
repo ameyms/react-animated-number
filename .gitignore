@@ -1,3 +1,7 @@
+# Built
+react-animated-number*.tgz
+build/
+example/demo.bundle.js
 # Logs
 logs
 *.log

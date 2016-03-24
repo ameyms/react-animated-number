@@ -1,0 +1,14 @@
+{
+  "name": "react-animated-number-demo1",
+  "version": "0.1.0",
+  "description": "",
+  "main": "demo.jsx",
+  "author": "Amey Sakhadeo <me@ameyms.com>",
+  "license": "MIT",
+  "dependencies": {
+    "pretty-bytes": "^3.0.1",
+    "react": "^0.14.7",
+    "react-animated-number": "file:///Users/amey_sakhadeo/Code/symc/react-animated-number/react-animated-number-0.1.0.tgz",
+    "react-dom": "^0.14.7"
+  }
+}

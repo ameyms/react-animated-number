@@ -1,0 +1,63 @@
+{
+  "name": "react-animated-number",
+  "author": "Amey Sakhadeo",
+  "version": "0.1.0",
+  "description": "React component for animating numbers",
+  "main": "build/index.js",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "files": [
+    "build",
+    "package.json"
+  ],
+  "scripts": {},
+  "keywords": [
+    "react",
+    "animations"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ameyms/react-animated-number.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ameyms/react-animated-number/issues"
+  },
+  "devDependencies": {
+    "babel": "6.5.2",
+    "babel-core": "6.6.4",
+    "babel-eslint": "5.0.0",
+    "babel-plugin-constant-folding": "^1.0.1",
+    "babel-plugin-dead-code-elimination": "^1.0.2",
+    "babel-plugin-react-transform": "^2.0.0",
+    "babel-plugin-uglify": "^1.0.2",
+    "babel-preset-es2015": "^6.0.11",
+    "babel-preset-react": "^6.0.2",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-preset-stage-1": "^6.5.0",
+    "babel-preset-stage-2": "^6.5.0",
+    "babel-register": "6.6.0",
+    "babel-runtime": "6.6.1",
+    "babelify": "^7.2.0",
+    "bluebird": "^3.3.4",
+    "browserify": "^13.0.0",
+    "eslint": "~2.2.0",
+    "eslint-plugin-babel": "^3.1.0",
+    "eslint-plugin-react": "^4.2.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.1",
+    "gulp-cache": "^0.4.2",
+    "gulp-connect": "^3.2.1",
+    "gulp-eslint": "^2.0.0",
+    "gulp-if": "^2.0.0",
+    "gulp-load-plugins": "^1.2.0",
+    "gulp-nodemon": "^2.0.6",
+    "gulp-plumber": "^1.0.1",
+    "gulp-size": "^2.0.0",
+    "gulp-util": "^3.0.7"
+  },
+  "dependencies": {
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
