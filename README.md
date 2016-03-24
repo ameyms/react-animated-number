@@ -73,8 +73,9 @@ If set to `0`, rounds of intermediate values using `Math.round`
 <br/>
 
 
-## Example
-Examples can be found [here](https://github.com/ameyms/react-animated-number/blob/master/example/demo.jsx).
+## Demo
+A demo can be found [here](http://ameyms.com/react-animated-number/).
+Source code for the demo can be found [here](https://github.com/ameyms/react-animated-number/blob/master/example/demo.jsx).
 
 ## License
 react-animated-number is licensed under MIT license.
