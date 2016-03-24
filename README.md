@@ -1,6 +1,15 @@
 # react-animated-number
+[![npm version](https://badge.fury.io/js/react-animated-number.svg)](http://badge.fury.io/js/react-animated-number)
+[![devDependency Status](https://david-dm.org/ameyms/react-animated-number/dev-status.svg)](https://david-dm.org/ameyms/react-animated-number#info=devDependencies)
+
 React component for animating numbers
 
+## Install
+react-animated-number is available npm and can be used with [browserify](http://browserify.org/) or [webpack](https://webpack.github.io/).
+
+```
+npm install --save react-animated-number
+```
 ## Usage
 
 ```js
