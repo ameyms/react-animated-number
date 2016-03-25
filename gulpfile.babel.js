@@ -40,7 +40,7 @@ gulp.task('npmpack', ['build'], () => {
 
 gulp.task('demoInstall', ['npmpack'], () => {
     return new Promise((resolve, reject) => {
-        exec(`npm install --save ../${pkg.name}-${pkg.version}.tgz`, {
+        exec(`npm install ../${pkg.name}-${pkg.version}.tgz`, {
             cwd: path.join(__dirname, 'example')
         }, (err, stdout) => {
             if (err) {
@@ -64,19 +64,19 @@ gulp.task('demoBuild', ['demoInstall'], () => {
 });
 
 gulp.task('demo', ['demoBuild', 'watch'], () => {
-    $.connect.server({
+    return $.connect.server({
         root: 'example',
         livereload: true
     });
 });
 
 gulp.task('watch', () => {
-    gulp.watch(['example/*.html', 'src/{,*/}*.js{,x}', 'example/demo.jsx'], ['demoBuild']);
+    return gulp.watch(['example/*.html', 'src/{,*/}*.js{,x}', 'example/demo.jsx'], ['demoBuild']);
 });
 
 gulp.task('build', ['clean', 'lint'], () => {
 
-    gulp.src('src/{,*/}*.js{,x}')
+    return gulp.src('src/{,*/}*.js{,x}')
         .pipe($.plumber())
         .pipe($.babel())
         .pipe(gulp.dest('build/'));
