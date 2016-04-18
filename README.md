@@ -32,7 +32,7 @@ class Demo extends Component {
             frameStyle={perc => (
                 perc === 100 ? {} : {backgroundColor: '#ffeb3b'}
             )}
-            frameDuration={16} duration={300}
+            duration={300}
             format={n => prettyBytes(n)}/>
     }
 }
@@ -51,7 +51,7 @@ This is similar to the react transition [API](https://facebook.github.io/react/d
 
 ----
 
-#### format: ?(percentage: number) => string
+#### format: ?(n: number) => string
 A callback function that accepts a number and returns a formatted string
 
 ----
@@ -62,11 +62,6 @@ Total duration of animation in milliseconds
 
 ----
 
-#### frameDuration: ?number
-**default** `16`<br/>
-Duration of each animation frame in milliseconds.
-
-----
 
 #### frameStyle: ?(perc: number) => Object | void,
 A callback function that accepts the percentage of completion of current animation and returns the style object to applied to the current frame

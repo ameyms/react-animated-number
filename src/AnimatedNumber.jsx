@@ -1,5 +1,6 @@
 /* @flow */
 import React, {Component, PropTypes} from 'react';
+import raf from 'raf';
 
 const ANIMATION_DURATION: number = 300;
 
@@ -8,7 +9,6 @@ type AnimatedNumberProps = {
     format: ?(n: number) => string,
     value: number,
     duration: ?number,
-    frameDuration: ?number,
     frameStyle: ?(perc: number) => Object | void,
     stepPrecision: ?number,
     style: any
@@ -16,10 +16,9 @@ type AnimatedNumberProps = {
 
 export default class AnimatedNumber extends Component {
 
-
     totalFrames: number;
     tweenStep: number;
-    tweenInterval: number;
+    tweenHandle: number;
     state: {
         currentValue: number;
         frame: number;
@@ -33,7 +32,6 @@ export default class AnimatedNumber extends Component {
         format: PropTypes.func,
         value: PropTypes.number.isRequired,
         duration: PropTypes.number,
-        frameDuration: PropTypes.number,
         frameStyle: PropTypes.func,
         stepPrecision: PropTypes.number,
         style: PropTypes.object
@@ -43,15 +41,13 @@ export default class AnimatedNumber extends Component {
         component: 'span',
         format: n => n,
         duration: ANIMATION_DURATION,
-        frameDuration: 16,
         frameStyle: () => ({})
     }
 
     constructor() {
         super();
         this.state = {
-            currentValue: 0,
-            frame: 0
+            currentValue: 0
         };
     }
 
@@ -61,86 +57,85 @@ export default class AnimatedNumber extends Component {
 
     componentWillReceiveProps(nextProps: AnimatedNumberProps) {
 
-        if (+this.state.currentValue === +nextProps.value) {
+        if (this.state.currentValue === nextProps.value) {
             return;
         }
 
-        if (this.tweenInterval) {
+        if (this.tweenHandle) {
             this.endTween();
         }
 
         this.prepareTween(nextProps);
     }
 
-    prepareTween({value, duration, frameDuration}) {
-
-        const {currentValue} = this.state;
-
-        this.totalFrames = Math.ceil(duration / frameDuration) + 1;
-        this.tweenStep = (value - currentValue) / (this.totalFrames);
-
-        this.tweenInterval = setInterval(() => this.tweenValue(1), 16);
+    prepareTween() {
+        this.tweenHandle = raf((timestamp) => {
+            this.tweenValue(timestamp, true);
+        });
 
     }
 
     endTween() {
-        clearInterval(this.tweenInterval);
+        raf.cancel(this.tweenHandle);
         this.setState({
-            currValue: this.props.value,
-            frame: 0
+            ...this.state,
+            currentValue: this.props.value
         });
     }
 
-    tweenValue() {
-        const {value} = this.props;
-        let {frame = 0, currentValue = 0} = this.state;
+    tweenValue(timestamp, start) {
 
-        currentValue = +currentValue;
+        const {value, duration} = this.props;
 
-        if (currentValue === value) {
+        const {currentValue} = this.state;
+        const currentTime = timestamp;
+        const startTime = start ? timestamp : this.state.startTime;
+        const fromValue = start ? currentValue : this.state.fromValue;
+
+        let newValue;
+
+        if (currentTime - startTime >= duration) {
+            newValue = value;
+        } else {
+            newValue = fromValue + (
+                (value - fromValue) * ((currentTime - startTime) / duration)
+            );
+        }
+
+        if (newValue === value) {
             this.endTween();
             return;
         }
 
-        currentValue = currentValue + this.tweenStep;
-
-        if (this.tweenStep < 0) {
-            currentValue = Math.max(value, currentValue);
-        } else if (this.tweenStep > 0) {
-            currentValue = Math.min(value, currentValue);
-        }
-
-        frame = frame + 1;
-
-        if (currentValue === value) {
-            frame = this.totalFrames;
-            this.endTween();
-        }
-
-
-        this.setState({currentValue, frame});
+        this.setState({
+            currentValue: newValue,
+            startTime: startTime ? startTime : currentTime,
+            fromValue, currentTime
+        });
+        raf(this.tweenValue.bind(this));
     }
 
     render() {
         const {format, value, frameStyle, stepPrecision} = this.props;
-        const {frame, currentValue} = this.state;
+        const {currentValue, fromValue} = this.state;
 
         let {style} = this.props;
         let adjustedValue: number = currentValue;
+        const direction = value - fromValue;
 
         if (currentValue !== value) {
             if (stepPrecision > 0) {
-                adjustedValue = currentValue.toFixed(stepPrecision);
-            } else if (this.tweenStep < 0 && stepPrecision === 0) {
+                adjustedValue = Number(currentValue.toFixed(stepPrecision));
+            } else if (direction < 0 && stepPrecision === 0) {
                 adjustedValue = Math.floor(currentValue);
-            } else if (this.tweenStep > 0 && stepPrecision === 0) {
+            } else if (direction > 0 && stepPrecision === 0) {
                 adjustedValue = Math.ceil(currentValue);
             }
         }
 
-        adjustedValue = +adjustedValue;
+        const perc = Math.abs((adjustedValue - fromValue) / (value - fromValue) * 100);
 
-        const currStyle: (Object | null) = frameStyle((frame / this.totalFrames) * 100);
+        const currStyle: (Object | null) = frameStyle(perc);
 
         if (style && currStyle) {
             style = {
