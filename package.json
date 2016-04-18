@@ -65,5 +65,10 @@
   },
   "dependencies": {
     "raf": "^3.2.0"
+  },
+
+  "peerDependencies": {
+     "react": "^0.14.0 || ^15.0.1"
   }
+
 }
