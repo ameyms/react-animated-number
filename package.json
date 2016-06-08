@@ -1,7 +1,7 @@
 {
   "name": "react-animated-number",
   "author": "Amey Sakhadeo",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "React component for animating numbers",
   "main": "build/index.js",
   "engines": {
@@ -43,6 +43,7 @@
     "babelify": "^7.2.0",
     "bluebird": "^3.3.4",
     "browserify": "^13.0.0",
+    "del": "^2.2.0",
     "enzyme": "^2.2.0",
     "eslint": "~2.2.0",
     "eslint-plugin-babel": "^3.1.0",
@@ -66,9 +67,7 @@
   "dependencies": {
     "raf": "^3.2.0"
   },
-
   "peerDependencies": {
-     "react": "^0.14.0 || ^15.0.1"
+    "react": "^0.14.0 || ^15.0.1"
   }
-
 }

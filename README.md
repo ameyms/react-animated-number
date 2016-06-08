@@ -33,7 +33,7 @@ class Demo extends Component {
                 perc === 100 ? {} : {backgroundColor: '#ffeb3b'}
             )}
             duration={300}
-            format={n => prettyBytes(n)}/>
+            formatValue={n => prettyBytes(n)}/>
     }
 }
 ```
@@ -51,7 +51,7 @@ This is similar to the react transition [API](https://facebook.github.io/react/d
 
 ----
 
-#### format: ?(n: number) => string
+#### formatValue: ?(n: number) => string
 A callback function that accepts a number and returns a formatted string
 
 ----

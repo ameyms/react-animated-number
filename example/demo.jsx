@@ -46,7 +46,7 @@ class Demo extends Component {
                         )}
                         stepPrecision={0}
                         value={smallValue}
-                        format={n => `Animated numbers are ${n} ` +
+                        formatValue={n => `Animated numbers are ${n} ` +
                             'times more awesome than regular ones'}/>
                 </h4>
                 <div className="alert alert-info">
@@ -60,7 +60,7 @@ class Demo extends Component {
                             perc === 100 ? {} : {opacity: 0.25}
                         )}
                         value={bigValue}
-                        format={n => `You can format numbers like ${n} ` +
+                        formatValue={n => `You can format numbers like ${n} ` +
                             `to ${prettyBytes(n)}`}/>
                 </div>
 
@@ -83,7 +83,7 @@ class Demo extends Component {
                                 )}
                                 value={bigValue}
                                 component="text"
-                                format={n => prettyBytes(n)}/>
+                                formatValue={n => prettyBytes(n)}/>
                         </g>
                     </svg>
                 </div>

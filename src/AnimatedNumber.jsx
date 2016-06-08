@@ -6,7 +6,7 @@ const ANIMATION_DURATION: number = 300;
 
 type AnimatedNumberProps = {
     component: any,
-    format: ?(n: number) => string,
+    formatValue: ?(n: number) => string,
     value: number,
     duration: ?number,
     frameStyle: ?(perc: number) => Object | void,
@@ -29,7 +29,7 @@ export default class AnimatedNumber extends Component {
 
     static propTypes = {
         component: PropTypes.any,
-        format: PropTypes.func,
+        formatValue: PropTypes.func,
         value: PropTypes.number.isRequired,
         duration: PropTypes.number,
         frameStyle: PropTypes.func,
@@ -39,7 +39,7 @@ export default class AnimatedNumber extends Component {
 
     static defaultProps = {
         component: 'span',
-        format: n => n,
+        formatValue: n => n,
         duration: ANIMATION_DURATION,
         frameStyle: () => ({})
     }
@@ -116,7 +116,7 @@ export default class AnimatedNumber extends Component {
     }
 
     render() {
-        const {format, value, frameStyle, stepPrecision} = this.props;
+        const {formatValue, value, frameStyle, stepPrecision} = this.props;
         const {currentValue, fromValue} = this.state;
 
         let {style} = this.props;
@@ -149,7 +149,7 @@ export default class AnimatedNumber extends Component {
         return React.createElement(
             this.props.component,
             {...this.props, style},
-            format(adjustedValue)
+            formatValue(adjustedValue)
         );
     }
 
