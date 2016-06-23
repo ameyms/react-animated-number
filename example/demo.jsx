@@ -14,18 +14,31 @@ class Demo extends Component {
 
         this.state = {
             smallValue: 10,
-            bigValue: 1024
+            bigValue: 1024,
+            updates: 0
         };
     }
 
     componentDidMount() {
         this.interval = setInterval(() => this.update(), 2000);
+        this.interval = setInterval(() => this.mountUnmount(), 1000);
     }
 
     update() {
+        const {updates} = this.state;
+
         this.setState({
             smallValue: getRandomInt(10, 1000),
-            bigValue: getRandomInt(1024, Math.pow(1024, 4))
+            bigValue: getRandomInt(1024, Math.pow(1024, 4)),
+            updates: updates + 1
+        });
+    }
+
+    mountUnmount() {
+        const {updates} = this.state;
+
+        this.setState({
+            updates: updates + 1
         });
     }
 

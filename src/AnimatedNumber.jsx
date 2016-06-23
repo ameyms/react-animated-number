@@ -68,6 +68,10 @@ export default class AnimatedNumber extends Component {
         this.prepareTween(nextProps);
     }
 
+    componentWillUnmount() {
+        this.endTween();
+    }
+
     prepareTween() {
         this.tweenHandle = raf((timestamp) => {
             this.tweenValue(timestamp, true);
