@@ -55,7 +55,13 @@
       }
     ],
     "no-undefined": 2,
-    "no-use-before-define": 2,
+    "no-use-before-define": [
+        2,
+        {
+            "functions": false,
+            "classes": false
+        }
+    ],
     "no-unneeded-ternary": 1,
     "no-obj-calls": 2,
     "no-negated-in-lhs": 2,

@@ -1,4 +1,3 @@
-/* @flow */
 import React, {Component, PropTypes} from 'react';
 import raf from 'raf';
 
@@ -34,7 +33,8 @@ export default class AnimatedNumber extends Component {
         duration: PropTypes.number,
         frameStyle: PropTypes.func,
         stepPrecision: PropTypes.number,
-        style: PropTypes.object
+        style: PropTypes.object,
+        className: PropTypes.string
     }
 
     static defaultProps = {
@@ -95,7 +95,6 @@ export default class AnimatedNumber extends Component {
         const currentTime = timestamp;
         const startTime = start ? timestamp : this.state.startTime;
         const fromValue = start ? currentValue : this.state.fromValue;
-
         let newValue;
 
         if (currentTime - startTime >= duration) {
@@ -120,7 +119,7 @@ export default class AnimatedNumber extends Component {
     }
 
     render() {
-        const {formatValue, value, frameStyle, stepPrecision} = this.props;
+        const {formatValue, value, className, frameStyle, stepPrecision} = this.props;
         const {currentValue, fromValue} = this.state;
 
         let {style} = this.props;
@@ -152,10 +151,20 @@ export default class AnimatedNumber extends Component {
 
         return React.createElement(
             this.props.component,
-            {...this.props, style},
+            {...filterKnownProps(this.props), className, style},
             formatValue(adjustedValue)
         );
     }
-
-
 }
+
+function filterKnownProps(props) {
+    const sanitized = {};
+    const propNames = Object.keys(props);
+    const validProps = Object.keys(AnimatedNumber.propTypes);
+
+    propNames.filter(p => validProps.indexOf(p) < 0).forEach(p => {
+        sanitized[p] = props[p];
+    });
+
+    return sanitized;
+};

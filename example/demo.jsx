@@ -94,6 +94,7 @@ class Demo extends Component {
                                 frameStyle={perc => (
                                     perc === 100 ? {} : {opacity: 0.25}
                                 )}
+                                duration={300}
                                 value={bigValue}
                                 component="text"
                                 formatValue={n => prettyBytes(n)}/>
