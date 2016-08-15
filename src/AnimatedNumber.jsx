@@ -87,7 +87,19 @@ export default class AnimatedNumber extends Component {
         });
     }
 
+    ensureSixtyFps(timestamp) {
+
+        const {currentTime} = this.state;
+
+        return !currentTime || (timestamp - currentTime > 16);
+    }
+
     tweenValue(timestamp, start) {
+
+        if (!this.ensureSixtyFps(timestamp)) {
+            raf(this.tweenValue.bind(this));
+            return;
+        }
 
         const {value, duration} = this.props;
 
@@ -96,6 +108,8 @@ export default class AnimatedNumber extends Component {
         const startTime = start ? timestamp : this.state.startTime;
         const fromValue = start ? currentValue : this.state.fromValue;
         let newValue;
+
+
 
         if (currentTime - startTime >= duration) {
             newValue = value;

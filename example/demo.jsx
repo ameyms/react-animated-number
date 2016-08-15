@@ -20,8 +20,8 @@ class Demo extends Component {
     }
 
     componentDidMount() {
-        this.interval = setInterval(() => this.update(), 2000);
-        this.interval = setInterval(() => this.mountUnmount(), 1000);
+        this.interval = setInterval(() => this.update(), 3000);
+        this.interval = setInterval(() => this.mountUnmount(), 11000);
     }
 
     update() {
