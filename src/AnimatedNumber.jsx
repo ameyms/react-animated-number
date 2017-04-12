@@ -97,7 +97,7 @@ export default class AnimatedNumber extends Component {
     tweenValue(timestamp, start) {
 
         if (!this.ensureSixtyFps(timestamp)) {
-            raf(this.tweenValue.bind(this));
+            this.tweenHandle = raf(this.tweenValue.bind(this));
             return;
         }
 
@@ -129,7 +129,7 @@ export default class AnimatedNumber extends Component {
             startTime: startTime ? startTime : currentTime,
             fromValue, currentTime
         });
-        raf(this.tweenValue.bind(this));
+        this.tweenHandle = raf(this.tweenValue.bind(this));
     }
 
     render() {
