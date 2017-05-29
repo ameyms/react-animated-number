@@ -44,6 +44,11 @@ class Demo extends Component {
 Numeric value to which to tween to
 
 ----
+#### initialValue: number
+**default**: `0`<br/>
+Initial numeric value for the tween start
+
+----
 
 #### component: any
 **default**: `"span"`<br/>

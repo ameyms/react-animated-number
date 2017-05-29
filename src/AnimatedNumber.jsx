@@ -8,6 +8,7 @@ type AnimatedNumberProps = {
     component: any,
     formatValue: ?(n: number) => string,
     value: number,
+    initialValue: number,
     duration: ?number,
     frameStyle: ?(perc: number) => Object | void,
     stepPrecision: ?number,
@@ -31,6 +32,7 @@ export default class AnimatedNumber extends Component {
         component: PropTypes.any,
         formatValue: PropTypes.func,
         value: PropTypes.number.isRequired,
+        initialValue: PropTypes.number,
         duration: PropTypes.number,
         frameStyle: PropTypes.func,
         stepPrecision: PropTypes.number,
@@ -41,14 +43,15 @@ export default class AnimatedNumber extends Component {
     static defaultProps = {
         component: 'span',
         formatValue: n => n,
+        initialValue: 0,
         duration: ANIMATION_DURATION,
         frameStyle: () => ({})
     }
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            currentValue: 0
+            currentValue: props.initialValue
         };
     }
 
