@@ -84,7 +84,9 @@ export default class AnimatedNumber extends Component {
     }
 
     endTween() {
-        raf.cancel(this.tweenHandle);
+        
+        
+        .cancel(this.tweenHandle);
         this.setState({
             ...this.state,
             currentValue: this.props.value
