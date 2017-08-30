@@ -45,7 +45,8 @@ export default class AnimatedNumber extends Component {
         formatValue: n => n,
         initialValue: 0,
         duration: ANIMATION_DURATION,
-        frameStyle: () => ({})
+        frameStyle: () => ({}),
+        value: 0,
     }
 
     constructor(props) {
