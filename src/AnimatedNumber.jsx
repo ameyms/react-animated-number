@@ -31,7 +31,7 @@ export default class AnimatedNumber extends Component {
     static propTypes = {
         component: PropTypes.any,
         formatValue: PropTypes.func,
-        value: PropTypes.number.isRequired,
+        value: PropTypes.number,
         initialValue: PropTypes.number,
         duration: PropTypes.number,
         frameStyle: PropTypes.func,
