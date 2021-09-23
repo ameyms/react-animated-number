@@ -60,17 +60,17 @@ export default class AnimatedNumber extends Component {
         this.prepareTween(this.props);
     }
 
-    componentWillReceiveProps(nextProps: AnimatedNumberProps) {
+    static getDerivedStateFromProps(props: AnimatedNumberProps, state) {
 
-        if (this.state.currentValue === nextProps.value) {
-            return;
-        }
+        if (state.currentValue === props.value) {
+                return;
+            }
 
-        if (this.tweenHandle) {
-            this.endTween();
-        }
+            if (this.tweenHandle) {
+                this.endTween();
+            }
 
-        this.prepareTween(nextProps);
+            this.prepareTween(nextProps);
     }
 
     componentWillUnmount() {
