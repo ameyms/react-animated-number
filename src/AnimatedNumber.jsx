@@ -133,8 +133,9 @@ export default class AnimatedNumber extends Component {
             currentValue: newValue,
             startTime: startTime ? startTime : currentTime,
             fromValue, currentTime
+        }, () => {
+            this.tweenHandle = raf(this.tweenValue.bind(this));
         });
-        this.tweenHandle = raf(this.tweenValue.bind(this));
     }
 
     render() {
