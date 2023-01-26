@@ -1,9 +1,9 @@
 {
   "name": "react-animated-number-2",
   "author": "Amey Sakhadeo",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "description": "React component for animating numbers",
-  "main": "src/AnimatedNumber.jsx",
+  "main": "src/AnimatedNumber.js",
   "engines": {
     "node": ">=4.0.0"
   },
