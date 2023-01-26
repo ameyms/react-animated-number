@@ -3,7 +3,7 @@
   "author": "Amey Sakhadeo",
   "version": "0.4.5",
   "description": "React component for animating numbers",
-  "main": "src/index.js",
+  "main": "src/AnimatedNumber.jsx",
   "engines": {
     "node": ">=4.0.0"
   },
