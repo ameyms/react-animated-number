@@ -74,7 +74,7 @@ export default class AnimatedNumber extends Component {
     }
 
     componentWillUnmount() {
-        this.endTween();
+        this.cancelTween();
     }
 
     prepareTween() {
@@ -84,10 +84,16 @@ export default class AnimatedNumber extends Component {
 
     }
 
+    cancelTween() {
+        if (this.tweenHandle) {
+            raf.cancel(this.tweenHandle);
+            this.tweenHandle = null;
+        }
+    }
+
     endTween() {
-        raf.cancel(this.tweenHandle);
+        this.cancelTween();
         this.setState({
-            ...this.state,
             currentValue: this.props.value
         });
     }
@@ -112,22 +118,20 @@ export default class AnimatedNumber extends Component {
         const currentTime = timestamp;
         const startTime = start ? timestamp : this.state.startTime;
         const fromValue = start ? currentValue : this.state.fromValue;
-        let newValue;
-
-
-
         if (currentTime - startTime >= duration) {
-            newValue = value;
-        } else {
-            newValue = fromValue + (
-                (value - fromValue) * ((currentTime - startTime) / duration)
-            );
-        }
-
-        if (newValue === value) {
-            this.endTween();
+            this.tweenHandle = null;
+            this.setState({
+                currentValue: value,
+                startTime,
+                fromValue,
+                currentTime
+            });
             return;
         }
+
+        const newValue = fromValue + (
+            (value - fromValue) * ((currentTime - startTime) / duration)
+        );
 
         this.setState({
             currentValue: newValue,
